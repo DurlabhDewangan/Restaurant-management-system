@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "Industry level restaurant backend",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "javascript",
     "backend",
     "restaurant"
   ],
-  "author": "Durlabh sagar Dewangan",
-  "license": "ISC"
+  "author": "Durlabh Dewangan",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
+  }
 }
