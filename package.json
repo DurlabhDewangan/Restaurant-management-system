@@ -1,0 +1,16 @@
+{
+  "name": "restaurant-backend",
+  "version": "1.0.0",
+  "description": "Industry level restaurant backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "javascript",
+    "backend",
+    "restaurant"
+  ],
+  "author": "Durlabh sagar Dewangan",
+  "license": "ISC"
+}
