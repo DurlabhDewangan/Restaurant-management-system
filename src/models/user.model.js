@@ -5,13 +5,10 @@ import jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
     {
-username: {
+  username: {
   type: String,
+  unique:true,
   required: true,
-  unique: true,
-  lowercase: true,
-  trim: true,
-  index: true,
   minlength: 3,
   maxlength: 30,
 },
@@ -30,18 +27,13 @@ username: {
   trim: true,
  },
 
- fullname:{
-    type:String,
-    required:true,
-    trim:true,
- },
   avatar:{
     type:String,
     default:null
   },
   role:{
     type: String,
-    enum: ['customer', 'admin', 'staff'],
+    enum: ['customer', 'admin'],
     default: 'customer',
   },
   password:{
@@ -77,7 +69,6 @@ userSchema.methods.generateAccessToken = function(){
     _id:this._id,
     email:this.email,
     username:this.username,
-    fullname:this.fullname,
   },
   process.env.ACCESS_TOKEN_SECRET,
   {
