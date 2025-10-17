@@ -1,6 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { User } from "./user.model";
-import { FoodItem } from "./foodItem.model";
 
 const orderSchema = new Schema(
     {
@@ -13,7 +11,7 @@ const orderSchema = new Schema(
         items: [
 
             {
-                foodItem: {
+                foodItemId: {
                     type: mongoose.Schema.Types.ObjectId,
                     ref: "FoodItem",
                     required: true
@@ -25,15 +23,38 @@ const orderSchema = new Schema(
                     min: 1
                 },
 
-                priceAtPurchaseTime:{
-                    type:Number,
-                    required:true,
-                    
+                priceAtPurchaseTime: {
+                    type: Number,
+                    required: true,
+
                 }
             }
 
         ],
 
+        totalAmount: {
+            type: Number,
+            required: true,
+        },
+
+        orderStatus: {
+            type: String,
+            enum: ["placed", "preparing", "out_for_delivery", "delivered"],
+            default: "placed"
+        },
+        deliveryAddress: {
+            type: String,
+            required: true
+        },
+        paymentStatus: {
+            type: String,
+            enum: ["paid", "unpaid"],
+            default: "unpaid"
+        }
+
+
     },
     { timestamps: true }
 )
+
+export const Order = mongoose.model("Order", orderSchema);
